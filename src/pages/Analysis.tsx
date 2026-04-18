@@ -43,7 +43,7 @@ export default function Analysis() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    document.title = "Your Aides analysis";
+    document.title = "Your AIdeas analysis";
   }, []);
 
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function Analysis() {
     {
       icon: Search,
       title: "Market & landscape research",
-      desc: `Aides is gathering public data, news, and regulatory filings about ${submission.industry || "your industry"}${submission.location ? ` in ${submission.location}` : ""}.`,
+      desc: `AIdeas is gathering public data, news, and regulatory filings about ${submission.industry || "your industry"}${submission.location ? ` in ${submission.location}` : ""}.`,
     },
     {
       icon: Users,
@@ -122,10 +122,10 @@ export default function Analysis() {
       <header className="border-b border-border bg-background/80 backdrop-blur">
         <div className="container flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary text-primary-foreground shadow-glow">
               <Sparkles className="h-4 w-4" />
             </div>
-            <span className="font-display text-lg font-bold tracking-tight">Aides</span>
+            <span className="font-display text-lg font-bold tracking-tight">AIdeas</span>
           </Link>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" onClick={copyLink} className="gap-2">
@@ -144,7 +144,7 @@ export default function Analysis() {
         <div className="mb-8 flex items-start gap-3 rounded-xl border border-border bg-accent/40 p-4">
           <Clock className="mt-0.5 h-5 w-5 shrink-0 text-accent-foreground" />
           <div>
-            <p className="text-sm font-medium text-foreground">Your Aides agents are working on this</p>
+            <p className="text-sm font-medium text-foreground">Your AIdeas agents are working on this</p>
             <p className="mt-1 text-sm text-muted-foreground">
               We’ve received your submission. The full research brief, contacts, and bookings will appear here as agents complete their work.
               {submission.contact_email && <> We’ll also send updates to <span className="font-medium text-foreground">{submission.contact_email}</span>.</>}
@@ -194,7 +194,7 @@ export default function Analysis() {
             </div>
             {submission.goals && (
               <div className="rounded-xl border border-border bg-card p-4">
-                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">What Aides should accomplish</p>
+                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">What AIdeas should accomplish</p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground whitespace-pre-wrap">{submission.goals}</p>
               </div>
             )}
