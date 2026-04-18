@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Search,
@@ -61,18 +62,9 @@ const benefits = [
 ];
 
 export default function Landing() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
   useEffect(() => {
     document.title = "Aides — AI Research & Outreach Agent for Startups";
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
