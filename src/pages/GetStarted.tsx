@@ -40,7 +40,7 @@ export default function GetStarted() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
 
   useEffect(() => {
-    document.title = "Get started · Aides";
+    document.title = "Get started · AIdeas";
   }, []);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) => {
@@ -90,10 +90,10 @@ export default function GetStarted() {
       <header className="border-b border-border bg-background/80 backdrop-blur">
         <div className="container flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary text-primary-foreground shadow-glow">
               <Sparkles className="h-4 w-4" />
             </div>
-            <span className="font-display text-lg font-bold tracking-tight">Aides</span>
+            <span className="font-display text-lg font-bold tracking-tight">AIdeas</span>
           </Link>
           <Button asChild variant="ghost" size="sm" className="gap-2">
             <Link to="/"><ArrowLeft className="h-4 w-4" /> Back</Link>
@@ -108,7 +108,7 @@ export default function GetStarted() {
             Tell us about your startup
           </h1>
           <p className="mt-3 text-muted-foreground">
-            The more context you give Aides, the better the research and outreach. This takes about 2 minutes.
+            The more context you give AIdeas, the better the research and outreach. This takes about 2 minutes.
           </p>
         </div>
 
@@ -184,7 +184,7 @@ export default function GetStarted() {
           </div>
 
           <div className="grid gap-2">
-            <Label htmlFor="goals">What do you want Aides to research / accomplish?</Label>
+            <Label htmlFor="goals">What do you want AIdeas to research / accomplish?</Label>
             <Textarea
               id="goals"
               value={form.goals}

@@ -43,7 +43,7 @@ export default function Analysis() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    document.title = "Your Aides analysis";
+    document.title = "Your AIdeas analysis";
   }, []);
 
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function Analysis() {
     {
       icon: Search,
       title: "Market & landscape research",
-      desc: `Aides is gathering public data, news, and regulatory filings about ${submission.industry || "your industry"}${submission.location ? ` in ${submission.location}` : ""}.`,
+      desc: `AIdeas is gathering public data, news, and regulatory filings about ${submission.industry || "your industry"}${submission.location ? ` in ${submission.location}` : ""}.`,
     },
     {
       icon: Users,
@@ -122,10 +122,10 @@ export default function Analysis() {
       <header className="border-b border-border bg-background/80 backdrop-blur">
         <div className="container flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary text-primary-foreground shadow-glow">
               <Sparkles className="h-4 w-4" />
             </div>
-            <span className="font-display text-lg font-bold tracking-tight">Aides</span>
+            <span className="font-display text-lg font-bold tracking-tight">AIdeas</span>
           </Link>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" onClick={copyLink} className="gap-2">
