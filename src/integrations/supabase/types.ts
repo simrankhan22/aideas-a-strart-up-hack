@@ -437,6 +437,54 @@ export type Database = {
           },
         ]
       }
+      startup_submissions: {
+        Row: {
+          analysis: Json
+          contact_email: string | null
+          created_at: string
+          description: string
+          goals: string | null
+          id: string
+          industry: string | null
+          location: string | null
+          stage: string | null
+          startup_name: string
+          status: string
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          analysis?: Json
+          contact_email?: string | null
+          created_at?: string
+          description: string
+          goals?: string | null
+          id?: string
+          industry?: string | null
+          location?: string | null
+          stage?: string | null
+          startup_name: string
+          status?: string
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          analysis?: Json
+          contact_email?: string | null
+          created_at?: string
+          description?: string
+          goals?: string | null
+          id?: string
+          industry?: string | null
+          location?: string | null
+          stage?: string | null
+          startup_name?: string
+          status?: string
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
       templates: {
         Row: {
           category: Database["public"]["Enums"]["template_category"]
