@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Search,
@@ -61,18 +62,9 @@ const benefits = [
 ];
 
 export default function Landing() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
   useEffect(() => {
     document.title = "Aides — AI Research & Outreach Agent for Startups";
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -88,10 +80,9 @@ export default function Landing() {
           <nav className="hidden items-center gap-8 md:flex">
             <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</a>
             <a href="#how" className="text-sm text-muted-foreground hover:text-foreground transition-colors">How it works</a>
-            <a href="#waitlist" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Waitlist</a>
           </nav>
           <Button asChild size="sm">
-            <a href="#waitlist">Join waitlist</a>
+            <Link to="/get-started">Get started</Link>
           </Button>
         </div>
       </header>
@@ -114,13 +105,13 @@ export default function Landing() {
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button asChild size="lg" className="gap-2 w-full sm:w-auto">
-                <a href="#waitlist">Get early access <ArrowRight className="h-4 w-4" /></a>
+                <Link to="/get-started">Get started <ArrowRight className="h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                 <a href="#how">See how it works</a>
               </Button>
             </div>
-            <p className="mt-4 text-xs text-muted-foreground">No credit card · Onboarded personally</p>
+            <p className="mt-4 text-xs text-muted-foreground">No credit card · Free to try</p>
           </div>
 
           {/* Visual mock */}
@@ -222,35 +213,20 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* Waitlist CTA */}
-        <section id="waitlist" className="container py-20 sm:py-28">
+        {/* Final CTA */}
+        <section className="container py-20 sm:py-28">
           <div className="mx-auto max-w-2xl rounded-3xl border border-border bg-card p-8 text-center sm:p-14">
             <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              Get early access to Aides
+              Ready to put Aides to work?
             </h2>
             <p className="mt-4 text-muted-foreground">
-              We’re onboarding a small group of founders. Drop your email and we’ll reach out personally.
+              Tell us about your startup and get a complete research & outreach brief in minutes.
             </p>
-
-            {submitted ? (
-              <div className="mx-auto mt-8 flex max-w-md items-center justify-center gap-2 rounded-lg border border-success/30 bg-success/10 p-4 text-success">
-                <Check className="h-4 w-4" />
-                <span className="text-sm font-medium">You’re on the list. We’ll be in touch soon.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="mx-auto mt-8 flex max-w-md flex-col gap-2 sm:flex-row">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="founder@yourstartup.com"
-                  className="flex-1 rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none ring-offset-background transition-shadow focus:ring-2 focus:ring-ring"
-                />
-                <Button type="submit" size="lg">Join waitlist</Button>
-              </form>
-            )}
-            <p className="mt-3 text-xs text-muted-foreground">We’ll never share your email. Unsubscribe anytime.</p>
+            <div className="mt-8 flex justify-center">
+              <Button asChild size="lg" className="gap-2">
+                <Link to="/get-started">Get started <ArrowRight className="h-4 w-4" /></Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>
