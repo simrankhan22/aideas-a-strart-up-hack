@@ -144,7 +144,7 @@ export default function Analysis() {
         <div className="mb-8 flex items-start gap-3 rounded-xl border border-border bg-accent/40 p-4">
           <Clock className="mt-0.5 h-5 w-5 shrink-0 text-accent-foreground" />
           <div>
-            <p className="text-sm font-medium text-foreground">Your Aides agents are working on this</p>
+            <p className="text-sm font-medium text-foreground">Your AIdeas agents are working on this</p>
             <p className="mt-1 text-sm text-muted-foreground">
               We’ve received your submission. The full research brief, contacts, and bookings will appear here as agents complete their work.
               {submission.contact_email && <> We’ll also send updates to <span className="font-medium text-foreground">{submission.contact_email}</span>.</>}
@@ -194,7 +194,7 @@ export default function Analysis() {
             </div>
             {submission.goals && (
               <div className="rounded-xl border border-border bg-card p-4">
-                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">What Aides should accomplish</p>
+                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">What AIdeas should accomplish</p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground whitespace-pre-wrap">{submission.goals}</p>
               </div>
             )}
