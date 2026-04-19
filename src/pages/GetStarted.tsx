@@ -151,22 +151,26 @@ export default function GetStarted() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="grid gap-2">
-              <Label htmlFor="location">Current location</Label>
+              <Label htmlFor="location">Current location *</Label>
               <Input
                 id="location"
                 value={form.location}
                 onChange={(e) => update("location", e.target.value)}
                 placeholder="Where you're based — e.g. San Francisco, USA"
+                maxLength={120}
               />
+              {errors.location && <p className="text-xs text-destructive">{errors.location}</p>}
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="marketplace">Marketplace</Label>
+              <Label htmlFor="marketplace">Marketplace *</Label>
               <Input
                 id="marketplace"
                 value={form.marketplace}
                 onChange={(e) => update("marketplace", e.target.value)}
                 placeholder="Target market — e.g. Southeast Asia, EU"
+                maxLength={120}
               />
+              {errors.marketplace && <p className="text-xs text-destructive">{errors.marketplace}</p>}
             </div>
           </div>
 
