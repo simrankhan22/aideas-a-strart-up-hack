@@ -447,6 +447,7 @@ export type Database = {
           id: string
           industry: string | null
           location: string | null
+          marketplace: string | null
           stage: string | null
           startup_name: string
           status: string
@@ -462,6 +463,7 @@ export type Database = {
           id?: string
           industry?: string | null
           location?: string | null
+          marketplace?: string | null
           stage?: string | null
           startup_name: string
           status?: string
@@ -477,6 +479,7 @@ export type Database = {
           id?: string
           industry?: string | null
           location?: string | null
+          marketplace?: string | null
           stage?: string | null
           startup_name?: string
           status?: string
