@@ -71,6 +71,7 @@ export default function GetStarted() {
         website: parsed.data.website || null,
         industry: parsed.data.industry || null,
         location: parsed.data.location || null,
+        marketplace: parsed.data.marketplace || null,
         stage: parsed.data.stage || null,
         description: parsed.data.description,
         goals: parsed.data.goals || null,
