@@ -1,0 +1,1 @@
+ALTER TABLE public.startup_submissions ADD COLUMN IF NOT EXISTS marketplace TEXT;

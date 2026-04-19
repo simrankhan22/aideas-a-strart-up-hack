@@ -14,6 +14,7 @@ const schema = z.object({
   website: z.string().trim().max(200).optional().or(z.literal("")),
   industry: z.string().trim().max(80).optional().or(z.literal("")),
   location: z.string().trim().max(120).optional().or(z.literal("")),
+  marketplace: z.string().trim().max(120).optional().or(z.literal("")),
   stage: z.string().trim().max(60).optional().or(z.literal("")),
   description: z.string().trim().min(20, "Please describe your startup in at least 20 characters").max(2000),
   goals: z.string().trim().max(1000).optional().or(z.literal("")),
@@ -32,6 +33,7 @@ export default function GetStarted() {
     website: "",
     industry: "",
     location: "",
+    marketplace: "",
     stage: "",
     description: "",
     goals: "",
@@ -69,6 +71,7 @@ export default function GetStarted() {
         website: parsed.data.website || null,
         industry: parsed.data.industry || null,
         location: parsed.data.location || null,
+        marketplace: parsed.data.marketplace || null,
         stage: parsed.data.stage || null,
         description: parsed.data.description,
         goals: parsed.data.goals || null,
@@ -148,26 +151,36 @@ export default function GetStarted() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="grid gap-2">
-              <Label htmlFor="location">Location / market</Label>
+              <Label htmlFor="location">Current location</Label>
               <Input
                 id="location"
                 value={form.location}
                 onChange={(e) => update("location", e.target.value)}
-                placeholder="Singapore, USA, EU…"
+                placeholder="Where you're based — e.g. San Francisco, USA"
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="stage">Stage</Label>
-              <select
-                id="stage"
-                value={form.stage}
-                onChange={(e) => update("stage", e.target.value)}
-                className="h-10 rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-ring"
-              >
-                <option value="">Select…</option>
-                {stages.map((s) => <option key={s} value={s}>{s}</option>)}
-              </select>
+              <Label htmlFor="marketplace">Marketplace</Label>
+              <Input
+                id="marketplace"
+                value={form.marketplace}
+                onChange={(e) => update("marketplace", e.target.value)}
+                placeholder="Target market — e.g. Southeast Asia, EU"
+              />
             </div>
+          </div>
+
+          <div className="grid gap-2 sm:max-w-xs">
+            <Label htmlFor="stage">Stage</Label>
+            <select
+              id="stage"
+              value={form.stage}
+              onChange={(e) => update("stage", e.target.value)}
+              className="h-10 rounded-md border border-input bg-background px-3 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-ring"
+            >
+              <option value="">Select…</option>
+              {stages.map((s) => <option key={s} value={s}>{s}</option>)}
+            </select>
           </div>
 
           <div className="grid gap-2">
