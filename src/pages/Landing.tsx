@@ -124,10 +124,6 @@ export default function Landing() {
 
           <div className="container relative py-20 sm:py-28 lg:py-32">
             <div className="mx-auto max-w-3xl text-center">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-1 text-xs text-muted-foreground backdrop-blur shadow-soft">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
-                Now in private beta — invite-only
-              </div>
               <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
                 Your AI agent for{" "}
                 <span className="relative inline-block text-primary">
@@ -147,7 +143,7 @@ export default function Landing() {
                   <a href="#how">See how it works</a>
                 </Button>
               </div>
-              <p className="mt-5 text-xs text-muted-foreground">No credit card · Free to try · 2-minute setup</p>
+              
             </div>
 
             {/* Visual mock */}
