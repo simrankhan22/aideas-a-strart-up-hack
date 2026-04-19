@@ -13,8 +13,8 @@ const schema = z.object({
   startup_name: z.string().trim().min(1, "Required").max(120),
   website: z.string().trim().max(200).optional().or(z.literal("")),
   industry: z.string().trim().max(80).optional().or(z.literal("")),
-  location: z.string().trim().max(120).optional().or(z.literal("")),
-  marketplace: z.string().trim().max(120).optional().or(z.literal("")),
+  location: z.string().trim().min(1, "Current location is required").max(120),
+  marketplace: z.string().trim().min(1, "Marketplace is required").max(120),
   stage: z.string().trim().max(60).optional().or(z.literal("")),
   description: z.string().trim().min(20, "Please describe your startup in at least 20 characters").max(2000),
   goals: z.string().trim().max(1000).optional().or(z.literal("")),
@@ -151,22 +151,26 @@ export default function GetStarted() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="grid gap-2">
-              <Label htmlFor="location">Current location</Label>
+              <Label htmlFor="location">Current location *</Label>
               <Input
                 id="location"
                 value={form.location}
                 onChange={(e) => update("location", e.target.value)}
                 placeholder="Where you're based — e.g. San Francisco, USA"
+                maxLength={120}
               />
+              {errors.location && <p className="text-xs text-destructive">{errors.location}</p>}
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="marketplace">Marketplace</Label>
+              <Label htmlFor="marketplace">Marketplace *</Label>
               <Input
                 id="marketplace"
                 value={form.marketplace}
                 onChange={(e) => update("marketplace", e.target.value)}
                 placeholder="Target market — e.g. Southeast Asia, EU"
+                maxLength={120}
               />
+              {errors.marketplace && <p className="text-xs text-destructive">{errors.marketplace}</p>}
             </div>
           </div>
 
