@@ -147,7 +147,7 @@ export default function Landing() {
                   <a href="#how">See how it works</a>
                 </Button>
               </div>
-              <p className="mt-5 text-xs text-muted-foreground">No credit card · Free to try · 2-minute setup</p>
+              
             </div>
 
             {/* Visual mock */}
