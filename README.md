@@ -1,73 +1,70 @@
-# Welcome to your Lovable project
+# gt_track
 
-## Project info
+Lightweight AI calling pipeline for:
+1. compliance research,
+2. follow-up target discovery,
+3. call-script generation,
+4. outbound call execution,
+5. transcript capture,
+6. booking detection + optional Google Calendar event creation.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Quick start
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Create env file:
+```bash
+cp .env.example .env
+```
+2. Fill required values in `.env` (`ANTHROPIC_API_KEY`, `ELEVENLABS_*`, `TO_NUMBER`, etc.).
+3. Install Python deps:
+```bash
+python3 -m pip install requests python-dotenv
 ```
 
-**Edit a file directly in GitHub**
+Optional deps:
+- Better phone/country detection:
+```bash
+python3 -m pip install phonenumbers
+```
+- Google Calendar event creation (`booking.py --create-event`):
+```bash
+python3 -m pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Main run
 
-**Use GitHub Codespaces**
+Run full pipeline:
+```bash
+python3 run_pipeline.py
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Current behavior:
+- It discovers all target numbers from generated research.
+- It **dials only `TO_NUMBER`** from `.env` (demo-safe mode).
+- It stores state in `pipeline_state.json`.
+- It stores per-run artifacts in `pipeline_runs/run_<timestamp>/`.
 
-## What technologies are used for this project?
+## Step-by-step flow
 
-This project is built with:
+The scripted order is:
+1. `web_research.py`
+2. `unsure_info.py`
+3. `create_speech.py`
+4. `make_call.py` / outbound call logic in `run_pipeline.py`
+5. `get_transcript.py`
+6. `booking.py`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+See also: `workflow_order.txt`.
 
-## How can I deploy this project?
+## Key generated files
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- `research.json`
+- `unsure_info.json`
+- `call_speeches.json`
+- `transcript.json` (latest transcript copy)
+- `pipeline_state.json` (latest run state)
+- `pipeline_runs/` (all run logs/artifacts)
 
-## Can I connect a custom domain to my Lovable project?
+## Notes
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- `.env` and generated artifacts are gitignored.
+- Use `.env.example` to share required configuration with teammates.

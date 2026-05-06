@@ -1,0 +1,7 @@
+Process order (current):
+1. web_research.py
+2. unsure_info.py
+3. create_speech.py
+4. make_call.py
+5. get_transcript.py
+6. booking.py
